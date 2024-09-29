@@ -14,12 +14,12 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 context.read<NotificationsBloc>().requestPermission();
               },
-              icon: Icon(Icons.settings))
+              icon: const Icon(Icons.settings))
         ],
         title: context
             .select((NotificationsBloc bloc) => Text('${bloc.state.status}')),
       ),
-      body: _HomeView(),
+      body: const _HomeView(),
     );
   }
 }
@@ -34,7 +34,7 @@ class _HomeView extends StatelessWidget {
       itemBuilder: (context, index) => ListTile(
         title: Text('Permiso $index'),
         subtitle: Text('Descripción del permiso $index'),
-        trailing: Icon(Icons.arrow_forward_ios),
+        trailing: const Icon(Icons.arrow_forward_ios),
       ),
     );
   }
