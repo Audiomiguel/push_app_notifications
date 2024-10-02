@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:push_app/presentation/blocs/notifications/notifications_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,6 +11,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          Text('Hello'),
           IconButton(
               onPressed: () {
                 context.read<NotificationsBloc>().requestPermission();
@@ -38,6 +40,9 @@ class _HomeView extends StatelessWidget {
         return ListTile(
           title: Text(notification.title),
           subtitle: Text(notification.body),
+          onTap: () {
+            context.push('/push-details/${notification.messageId}');
+          },
           leading: notification.imageUrl != null
               ? Image.network(notification.imageUrl!)
               : null,
